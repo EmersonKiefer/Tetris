@@ -13,6 +13,10 @@ public class Board {
 
     }
 
+    public void setCell(int col, int row, int num){
+        board[col][row] = num;
+    }
+
     public int[][] getBoard() {
         return board;
     }

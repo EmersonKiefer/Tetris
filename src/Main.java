@@ -20,12 +20,25 @@ public class Main extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //called 1 time per frame...move things, update the game, etc...
 
+        //moves pieces down
+        for (int i = r.getBoard().length-1; i > 0; i--) {
+            for (int j = r.getBoard()[0].length-1; j > 0; j--) {
+                if (r.getBoard()[i][j] == 1){
+                    if(r.getBoard()[i+1][j] == 0){
+                        r.setCell(i+1, j, 1);
+                        r.setCell(i, j, 0);
+                    }
+                }
 
+            }
 
-        repaint();
-    }
+        }
+
+        if(!Alive(r)){
+            timer.stop();
+        }
+     }
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -58,10 +71,10 @@ public class Main extends JPanel implements ActionListener {
     public static boolean Alive(Board b) {
         for (int i = 0; i < b.getBoard()[0].length; i++) {
             if (b.getBoard()[0][i] == 1) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 }
 
