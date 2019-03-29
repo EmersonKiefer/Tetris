@@ -92,3 +92,5 @@ public class Main extends JPanel implements ActionListener {
 // LR arrow keys for left/right
 //Down arrow key for Down
 //Q/W for left/right
+
+//Different pieces each get their own #
