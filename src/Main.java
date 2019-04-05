@@ -45,6 +45,16 @@ public class  Main extends JPanel implements ActionListener {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
         //Draw all the things.
+        g2.fillRect(240, 0, 400, 800);
+        g2.setColor(new Color(0x6B6A6F));
+        for (int i = 0; i < 800; i+=40) {
+            g2.drawLine(240, i, 640, i);
+        }
+        for (int i = 0; i < 400; i+=40) {
+            g2.drawLine(i +240, 0, i+240, 800);
+        }
+
+
 
 
 
@@ -55,7 +65,7 @@ public class  Main extends JPanel implements ActionListener {
         JFrame frame = new JFrame("Tetris");
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setBounds(0,0,200,222);
+        frame.setBounds(0,0,880,822);
         JPanel panel = new Main();
         panel.setFocusable(true);
         panel.grabFocus();
@@ -93,6 +103,17 @@ public class  Main extends JPanel implements ActionListener {
 //Down arrow key for Down
 //Q/W for left/right
 
+//rotation:
+// Check to see if the next position is legal
+// change row and col value of positive boxes
+
+/*
+line1 [r][c] [r][c-1] [r][c-2] [r][c+1] update()
+line2 [
+
+
+
+*/
 //Different pieces each get their own #
 
 //Rotation Rules:
