@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Main extends JPanel implements ActionListener {
+public class  Main extends JPanel implements ActionListener {
 
     private Timer timer;
     private Board r;
@@ -94,3 +94,7 @@ public class Main extends JPanel implements ActionListener {
 //Q/W for left/right
 
 //Different pieces each get their own #
+
+//Rotation Rules:
+//Each rotation gets its own number
+//Player presses rotate key, check if rotation is legal, then rotate
