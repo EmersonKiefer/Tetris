@@ -58,7 +58,7 @@ public class  Main extends JPanel implements ActionListener {
             for (int col = 0; col < b.getBoard()[0].length; col++) {
              if(b.getVal(row, col)>0){
 
-                 g2.fillRect(col*40+240, row*40-80, col*40+260, row*40-60);
+                 g2.fillRect(col*40+240, row*40-80, 40, 40);
                  repaint();
              }
             }
