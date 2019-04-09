@@ -4,6 +4,8 @@ public class Board {
     private int board[][] = new int[24][10]; //10*20 playing area, extra 4 rows to allow pieces to drop in
 
     public Board(){
+        board[10][3] = 1; //set random x,y to one for testing.
+
 //        for (int i = 0; i < board.length; i++) {
 //            for (int j = 0; j < board[0].length; j++) {
 //                System.out.println(board[i][j]);
@@ -13,7 +15,7 @@ public class Board {
 
     }
 
-    public void setCell(int col, int row, int num){
+    public void setCell(int col, int row, int num){ //gives cells numbers
         board[col][row] = num;
     }
 
@@ -21,13 +23,12 @@ public class Board {
         return board;
     }
 
-    public void printArr(){
-        for (int i = 0; i < board.length; i++) {
-            System.out.println();
-            for (int j = 0; j < board[0].length; j++) {
-                System.out.println(board[i][j]);
-
-            }
-        }
+    public int getVal(int col, int row){
+        return board[col][row];
     }
+
+
+
+
+
 }

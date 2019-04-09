@@ -9,10 +9,11 @@ import java.awt.event.ActionListener;
 public class  Main extends JPanel implements ActionListener {
 
     private Timer timer;
-    private Board r;
+    private Board b;
+
 
     public Main(){
-         r = new Board();
+         b = new Board();
          timer = new Timer(1000/60, this);
 
 
@@ -22,12 +23,12 @@ public class  Main extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         //moves pieces down
-        for (int i = r.getBoard().length-1; i > 0; i--) {
-            for (int j = r.getBoard()[0].length-1; j > 0; j--) {
-                if (r.getBoard()[i][j] == 1){
-                    if(r.getBoard()[i+1][j] == 0){
-                        r.setCell(i+1, j, 1);
-                        r.setCell(i, j, 0);
+        for (int i = b.getBoard().length-1; i > 0; i--) {
+            for (int j = b.getBoard()[0].length-1; j > 0; j--) {
+                if (b.getBoard()[i][j] == 1){
+                    if(b.getBoard()[i+1][j] == 0){
+                        b.setCell(i+1, j, 1);
+                        b.setCell(i, j, 0);
                     }
                 }
 
@@ -35,7 +36,7 @@ public class  Main extends JPanel implements ActionListener {
 
         }
 
-        if(!Alive(r)){
+        if(!Alive(b)){
             timer.stop();
         }
      }
@@ -53,6 +54,17 @@ public class  Main extends JPanel implements ActionListener {
         for (int i = 0; i < 400; i+=40) {
             g2.drawLine(i +240, 0, i+240, 800);
         }
+        for (int row = 0; row < b.getBoard().length; row++) {
+            for (int col = 0; col < b.getBoard()[0].length; col++) {
+             if(b.getVal(row, col)>0){
+
+                 g2.fillRect(col*40+240, row*40-80, col*40+260, row*40-60);
+                 repaint();
+             }
+            }
+
+        }
+
 
 
 
