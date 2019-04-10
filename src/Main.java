@@ -9,7 +9,8 @@ import java.awt.event.ActionListener;
 public class  Main extends JPanel implements ActionListener {
 
     private Timer timer;
-    private static Board b;
+    private Board b;
+
 
     public Main(){
          b = new Board();
@@ -35,7 +36,7 @@ public class  Main extends JPanel implements ActionListener {
 
         }
 
-        if(!Alive()){
+        if(!Alive(b)){
             timer.stop();
         }
      }
@@ -53,6 +54,17 @@ public class  Main extends JPanel implements ActionListener {
         for (int i = 0; i < 400; i+=40) {
             g2.drawLine(i +240, 0, i+240, 800);
         }
+        for (int row = 0; row < b.getBoard().length; row++) {
+            for (int col = 0; col < b.getBoard()[0].length; col++) {
+             if(b.getVal(row, col)>0){
+
+                 g2.fillRect(col*40+240, row*40-80, 40, 40);
+                 repaint();
+             }
+            }
+
+        }
+
 
 
 
@@ -78,7 +90,7 @@ public class  Main extends JPanel implements ActionListener {
     }
 
     //Use to see if Player has lost or can continue
-    public static boolean Alive() {
+    public static boolean Alive(Board b) {
         for (int i = 0; i < b.getBoard()[0].length; i++) {
             if (b.getBoard()[0][i] == 1) {
                 return false;
