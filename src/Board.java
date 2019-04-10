@@ -21,13 +21,6 @@ public class Board {
         return board;
     }
 
-    public void printArr(){
-        for (int i = 0; i < board.length; i++) {
-            System.out.println();
-            for (int j = 0; j < board[0].length; j++) {
-                System.out.println(board[i][j]);
 
-            }
-        }
-    }
+
 }

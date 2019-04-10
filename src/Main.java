@@ -9,10 +9,10 @@ import java.awt.event.ActionListener;
 public class  Main extends JPanel implements ActionListener {
 
     private Timer timer;
-    private Board r;
+    private static Board b;
 
     public Main(){
-         r = new Board();
+         b = new Board();
          timer = new Timer(1000/60, this);
 
 
@@ -22,12 +22,12 @@ public class  Main extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         //moves pieces down
-        for (int i = r.getBoard().length-1; i > 0; i--) {
-            for (int j = r.getBoard()[0].length-1; j > 0; j--) {
-                if (r.getBoard()[i][j] == 1){
-                    if(r.getBoard()[i+1][j] == 0){
-                        r.setCell(i+1, j, 1);
-                        r.setCell(i, j, 0);
+        for (int i = b.getBoard().length-1; i > 0; i--) {
+            for (int j = b.getBoard()[0].length-1; j > 0; j--) {
+                if (b.getBoard()[i][j] == 1){
+                    if(b.getBoard()[i+1][j] == 0){
+                        b.setCell(i+1, j, 1);
+                        b.setCell(i, j, 0);
                     }
                 }
 
@@ -35,7 +35,7 @@ public class  Main extends JPanel implements ActionListener {
 
         }
 
-        if(!Alive(r)){
+        if(!Alive()){
             timer.stop();
         }
      }
@@ -78,7 +78,7 @@ public class  Main extends JPanel implements ActionListener {
     }
 
     //Use to see if Player has lost or can continue
-    public static boolean Alive(Board b) {
+    public static boolean Alive() {
         for (int i = 0; i < b.getBoard()[0].length; i++) {
             if (b.getBoard()[0][i] == 1) {
                 return false;
