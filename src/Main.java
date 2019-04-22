@@ -14,31 +14,32 @@ public class  Main extends JPanel implements ActionListener {
 
     public Main(){
          b = new Board();
-         timer = new Timer(1000/60, this);
-
+         timer = new Timer(1000/5, this);
+         timer.start();
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         //moves pieces down
-        for (int i = b.getBoard().length-1; i > 0; i--) {
-            for (int j = b.getBoard()[0].length-1; j > 0; j--) {
-                if (b.getBoard()[i][j] == 1){
-                    if(b.getBoard()[i+1][j] == 0){
-                        b.setCell(i+1, j, 1);
-                        b.setCell(i, j, 0);
+        for (int i = b.getBoard().length-2; i > 0; i--) {
+            for (int j = b.getBoard()[0].length-2; j > 0; j--) {
+                if(i != 21){
+                    if (b.getBoard()[i][j] > 0){
+                        if(b.getBoard()[i+1][j] == 0){
+                            b.setCell(i+1, j, 1);
+                            b.setCell(i, j, 0);
+                        }
                     }
                 }
-
             }
-
         }
+
 
         if(!Alive(b)){
             timer.stop();
         }
+        repaint();
      }
 
     @Override
@@ -59,7 +60,6 @@ public class  Main extends JPanel implements ActionListener {
              if(b.getVal(row, col)>0){
 
                  g2.fillRect(col*40+240, row*40-80, 40, 40);
-                 repaint();
              }
             }
 
@@ -83,7 +83,7 @@ public class  Main extends JPanel implements ActionListener {
         panel.grabFocus();
         frame.add(panel);
         frame.setVisible(true);
-        frame.setResizable(false);
+        frame.setResizable(true);
 
 
 
