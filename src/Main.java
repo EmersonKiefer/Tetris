@@ -22,6 +22,7 @@ public class  Main extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         //moves pieces down
+        // USE FOR/or/WHILE LOOP TO CHECK FOR PIECES (LOOP THROUGH EACH CELL OF PIECE TO SEE IF ANY ARE COLLIDING)
         for (int i = b.getBoard().length-2; i > 0; i--) {
             for (int j = b.getBoard()[0].length-2; j > 0; j--) {
                 if(i != 21){
