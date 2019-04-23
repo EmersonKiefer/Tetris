@@ -8,6 +8,9 @@ public class Board {
         board[2][2] = 1;
 
 
+
+
+
     }
 
     public void setCell(int col, int row, int num){

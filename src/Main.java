@@ -60,6 +60,7 @@ public class  Main extends JPanel implements ActionListener {
              if(b.getVal(row, col)>0){
 
                  g2.fillRect(col*40+240, row*40-80, 40, 40);
+
              }
             }
 
@@ -83,7 +84,7 @@ public class  Main extends JPanel implements ActionListener {
         panel.grabFocus();
         frame.add(panel);
         frame.setVisible(true);
-        frame.setResizable(true);
+        frame.setResizable(false);
 
 
 
