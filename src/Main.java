@@ -72,7 +72,7 @@ public class  Main extends JPanel implements ActionListener, KeyListener {
         if(!Alive(b)){
             timer.stop();
         }
-        repaint();
+        repaint(); //test
      }
 
     @Override
@@ -152,6 +152,7 @@ public class  Main extends JPanel implements ActionListener, KeyListener {
 
 
 
+
 // Create 2d array of zeros (the game field) that can be populated with pieces.
 //
 // cell class:
@@ -181,3 +182,6 @@ line2 [
 //Rotation Rules:
 //Each rotation gets its own number
 //Player presses rotate key, check if rotation is legal, then rotate
+
+//start with random list that identifies a piece. List contains 4 sets of coordinates and piece number ex: (1+x)(2+y) line=1, square=4
+// each input(rotation/movement) changes the variable next to the coordinate, which will update the pieces
