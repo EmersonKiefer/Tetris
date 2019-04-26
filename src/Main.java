@@ -37,6 +37,9 @@ public class  Main extends JPanel implements ActionListener, KeyListener {
                             b.setCell(i, j, 0);
                         }
                     }
+                    else{
+                        b.makePiece();
+                    }
                 }
             }
         }

@@ -4,11 +4,7 @@ public class Board {
     private int board[][] = new int[24][10]; //10*20 playing area, extra 4 rows to allow pieces to drop in
 
     public Board(){
-        board[2][1] = 1;
-        board[2][2] = 1;
 
-        board[3][1]=1;
-        board[1][1]=1;
 
 
 
@@ -35,5 +31,33 @@ public class Board {
     }
     public int getVal(int col, int row){
         return board[col][row];
+    }
+
+    public void makePiece(){
+        int which = (int)(Math.random()*8);
+        if (which == 0){
+
+        }
+        if (which == 1){
+
+        }
+        if (which == 2){
+
+        }
+        if (which == 3){
+
+        }
+        if (which == 4){
+
+        }
+        if (which == 5){
+
+        }
+        if (which == 6){
+
+        }
+        if (which == 7){
+            
+        }
     }
 }
