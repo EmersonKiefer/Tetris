@@ -7,6 +7,9 @@ public class Board {
         board[2][1] = 1;
         board[2][2] = 1;
 
+        board[3][1]=1;
+        board[1][1]=1;
+
 
 
 

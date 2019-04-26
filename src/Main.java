@@ -4,25 +4,30 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 
-public class  Main extends JPanel implements ActionListener {
+public class  Main extends JPanel implements ActionListener, KeyListener {
 
     private Timer timer;
     private Board b;
+
+    private boolean[] keys;
 
 
     public Main(){
          b = new Board();
          timer = new Timer(1000/5, this);
          timer.start();
-
+         keys = new boolean[256];
+         addKeyListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         //moves pieces down
-        // USE FOR/or/WHILE LOOP TO CHECK FOR PIECES (LOOP THROUGH EACH CELL OF PIECE TO SEE IF ANY ARE COLLIDING)
+        //TODO: USE FOR/or/WHILE LOOP TO CHECK FOR PIECES (LOOP THROUGH EACH CELL OF PIECE TO SEE IF ANY ARE COLLIDING)
         for (int i = b.getBoard().length-2; i > 0; i--) {
             for (int j = b.getBoard()[0].length-2; j > 0; j--) {
                 if(i != 21){
@@ -34,6 +39,30 @@ public class  Main extends JPanel implements ActionListener {
                     }
                 }
             }
+        }
+
+        if(keys[KeyEvent.VK_W]){
+            System.out.println("W");
+        }
+        if(keys[KeyEvent.VK_UP]){ //rotate (right)
+
+        }
+
+        if(keys[KeyEvent.VK_DOWN]){ //drop
+
+        }
+
+        if(keys[KeyEvent.VK_SPACE]){ //drop to bottom
+
+        }
+        if(keys[KeyEvent.VK_LEFT]){//Move Left
+
+        }
+        if(keys[KeyEvent.VK_RIGHT]){ //Move Right
+
+        }
+        if(keys[KeyEvent.VK_C]){ //Hold
+
         }
 
 
@@ -99,6 +128,22 @@ public class  Main extends JPanel implements ActionListener {
             }
         }
         return true;
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        keys[e.getKeyCode()] = true;
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        keys[e.getKeyCode()] = false;
     }
 }
 
