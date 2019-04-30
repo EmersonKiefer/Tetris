@@ -5,6 +5,10 @@ public class Board {
 
     public Board(){
 
+        board[1][1] = 2;
+        board[2][3] = 2;
+        board[3][2] = 2;
+
 
 
 
@@ -34,30 +38,27 @@ public class Board {
     }
 
     public void makePiece(){
-        int which = (int)(Math.random()*8);
-        if (which == 0){
+        int which = (int)(Math.random()*7);
+        if (which == 0){//line
 
         }
-        if (which == 1){
+        if (which == 1){//Left-Z
 
         }
-        if (which == 2){
+        if (which == 2){//Right-Z
 
         }
-        if (which == 3){
+        if (which == 3){//Left-L
 
         }
-        if (which == 4){
+        if (which == 4){//Right-L
 
         }
-        if (which == 5){
+        if (which == 5){//Square
 
         }
-        if (which == 6){
+        if (which == 6){//T
 
-        }
-        if (which == 7){
-            
         }
     }
 }
