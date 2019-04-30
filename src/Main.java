@@ -16,64 +16,72 @@ public class  Main extends JPanel implements ActionListener, KeyListener {
     private boolean[] keys;
 
 
-    public Main(){
-         b = new Board();
-         timer = new Timer(1000/5, this);
-         timer.start();
-         keys = new boolean[256];
-         addKeyListener(this);
+    public Main() {
+        b = new Board();
+        timer = new Timer(1000 / 5, this);
+        timer.start();
+        keys = new boolean[256];
+        addKeyListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         //moves pieces down
         //TODO: USE FOR/or/WHILE LOOP TO CHECK FOR PIECES (LOOP THROUGH EACH CELL OF PIECE TO SEE IF ANY ARE COLLIDING)
-        for (int i = b.getBoard().length-2; i > 0; i--) {
-            for (int j = b.getBoard()[0].length-2; j > 0; j--) {
-                if(i != 21){
-                    if (b.getBoard()[i][j] > 0){
-                        if(b.getBoard()[i+1][j] == 0){
-                            b.setCell(i+1, j, 1);
+        for (int i = b.getBoard().length - 2; i > 0; i--) {
+            for (int j = b.getBoard()[0].length - 2; j > 0; j--) {
+                if (b.getBoard()[i][j] == 2) {
+                    if (b.getBoard()[i][j] > 0) {
+                        if (b.getBoard()[i + 1][j] == 0 && i != 21) {
+                            b.setCell(i + 1, j, 2);
                             b.setCell(i, j, 0);
                         }
-                    }
-                    else{
-                        b.makePiece();
+                        else {
+                            b.makePiece();
+                            for (int q = b.getBoard().length - 2; q > 0; q--) {
+                                for (int w = b.getBoard()[0].length - 2; w > 0; w--) {
+                                    if(b.getBoard()[q][w] > 1){
+                                        b.setCell(q, w, 1);
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
+
+
+            if (keys[KeyEvent.VK_W]) {
+                System.out.println("W");
+            }
+            if (keys[KeyEvent.VK_UP]) { //rotate (right)
+
+            }
+
+            if (keys[KeyEvent.VK_DOWN]) { //drop
+
+            }
+
+            if (keys[KeyEvent.VK_SPACE]) { //drop to bottom
+
+            }
+            if (keys[KeyEvent.VK_LEFT]) {//Move Left
+
+            }
+            if (keys[KeyEvent.VK_RIGHT]) { //Move Right
+
+            }
+            if (keys[KeyEvent.VK_C]) { //Hold
+
+            }
+
+
+            if (!Alive(b)) {
+                timer.stop();
+            }
+            repaint();
         }
-
-        if(keys[KeyEvent.VK_W]){
-            System.out.println("W");
-        }
-        if(keys[KeyEvent.VK_UP]){ //rotate (right)
-
-        }
-
-        if(keys[KeyEvent.VK_DOWN]){ //drop
-
-        }
-
-        if(keys[KeyEvent.VK_SPACE]){ //drop to bottom
-
-        }
-        if(keys[KeyEvent.VK_LEFT]){//Move Left
-
-        }
-        if(keys[KeyEvent.VK_RIGHT]){ //Move Right
-
-        }
-        if(keys[KeyEvent.VK_C]){ //Hold
-
-        }
-
-
-        if(!Alive(b)){
-            timer.stop();
-        }
-        repaint(); //test
-     }
+    }
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -149,7 +157,6 @@ public class  Main extends JPanel implements ActionListener, KeyListener {
         keys[e.getKeyCode()] = false;
     }
 }
-
 
 
 
