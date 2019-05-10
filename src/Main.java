@@ -58,6 +58,8 @@ public class  Main extends JPanel implements ActionListener, KeyListener {
 
             }
 
+        }
+
             if (keys[KeyEvent.VK_DOWN]) { //drop
 
             }
@@ -82,6 +84,7 @@ public class  Main extends JPanel implements ActionListener, KeyListener {
             repaint();
         }
     }
+
 
     @Override
     protected void paintComponent(Graphics g) {
