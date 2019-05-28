@@ -1,17 +1,19 @@
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
+import java.util.ArrayList;
+//get a random piece
+//create a new array list from piece
+//change 2d array list values to two for list
 
 public class  Main extends JPanel implements ActionListener, KeyListener {
 
     private Timer timer;
     private Board b;
+    private ArrayList<Integer> tempPiece;
 
     private boolean[] keys;
 
@@ -22,22 +24,39 @@ public class  Main extends JPanel implements ActionListener, KeyListener {
         timer.start();
         keys = new boolean[256];
         addKeyListener(this);
+        tempPiece = new ArrayList<>();
+        b.makePiece();
+        for (int i = 0; i < b.getPieceSize();  i++) {
+            tempPiece.add(b.getBlocks(i));
+            System.out.println(tempPiece.get(i));
+        }
+        for (int i = 0; i < tempPiece.size()-2; i+=2) {
+            b.setCell(tempPiece.get(i+1), tempPiece.get(i), 2);
+        }
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         //moves pieces down
-        //TODO: USE FOR/or/WHILE LOOP TO CHECK FOR PIECES (LOOP THROUGH EACH CELL OF PIECE TO SEE IF ANY ARE COLLIDING)
-        for (int i = b.getBoard().length - 2; i > 0; i--) {
-            for (int j = b.getBoard()[0].length - 2; j > 0; j--) {
+//        //TODO: USE FOR/or/WHILE LOOP TO CHECK FOR PIECES (LOOP THROUGH EACH CELL OF PIECE TO SEE IF ANY ARE COLLIDING)
+//        for (int i = 0; i < tempPiece.size()-2; i+=2) {
+//            b.setCell(tempPiece.get(i+1), tempPiece.get(i), 2);
+//        }
+
+
+        for (int i = b.getBoard().length - 2; i > -1; i--) {
+            for (int j = b.getBoard()[0].length - 2; j > -1; j--) {
                 if (b.getBoard()[i][j] == 2) {
                     if (b.getBoard()[i][j] > 0) {
                         if (b.getBoard()[i + 1][j] == 0 && i != 21) {
                             b.setCell(i + 1, j, 2);
                             b.setCell(i, j, 0);
+
+
                         }
                         else {
-                            b.makePiece();
+
                             for (int q = b.getBoard().length - 2; q > 0; q--) {
                                 for (int w = b.getBoard()[0].length - 2; w > 0; w--) {
                                     if(b.getBoard()[q][w] > 1){
@@ -45,7 +64,10 @@ public class  Main extends JPanel implements ActionListener, KeyListener {
                                     }
                                 }
                             }
+                            b.makePiece();
+
                         }
+
                     }
                 }
             }
@@ -60,30 +82,54 @@ public class  Main extends JPanel implements ActionListener, KeyListener {
 
         }
 
-            if (keys[KeyEvent.VK_DOWN]) { //drop
+        if (keys[KeyEvent.VK_DOWN]) { //drop
 
-            }
-
-            if (keys[KeyEvent.VK_SPACE]) { //drop to bottom
-
-            }
-            if (keys[KeyEvent.VK_LEFT]) {//Move Left
-
-            }
-            if (keys[KeyEvent.VK_RIGHT]) { //Move Right
-
-            }
-            if (keys[KeyEvent.VK_C]) { //Hold
-
-            }
-
-
-            if (!Alive(b)) {
-                timer.stop();
-            }
-            repaint();
         }
+
+        if (keys[KeyEvent.VK_SPACE]) { //drop to bottom
+
+        }
+        if (keys[KeyEvent.VK_LEFT]) {//Move Left
+
+            for (int i = 0; i < b.getBoard().length; i++) {
+                for (int j = 0; j < b.getBoard()[0].length; j++) {
+                    if(b.getVal(i,j) ==2){
+                        b.setCell(i, j, 0);
+                        b.setCell(i,j-1, 2);
+                    }
+
+                }
+
+            }
+
+        }
+        if (keys[KeyEvent.VK_RIGHT]) { //Move Right
+            int k = 0;
+            for (int i = b.getBoard().length-1; i > -1; i--) {
+                for (int j = b.getBoard()[0].length-1; j > -1; j--) {
+                    if(b.getVal(i,j) ==2){
+                        b.setCell(i, j, 0);
+                        b.setCell(i,j+1, 2);
+                        tempPiece.get(k);
+
+                    }
+
+                }
+
+            }
+
+        }
+        if (keys[KeyEvent.VK_C]) { //Hold
+
+        }
+
+
+        if (!Alive(b)) {
+            timer.stop();
+        }
+        repaint();
     }
+
 
 
     @Override
@@ -101,11 +147,11 @@ public class  Main extends JPanel implements ActionListener, KeyListener {
         }
         for (int row = 0; row < b.getBoard().length; row++) {
             for (int col = 0; col < b.getBoard()[0].length; col++) {
-             if(b.getVal(row, col)>0){
+                if(b.getVal(row, col)>0){
 
-                 g2.fillRect(col*40+240, row*40-80, 40, 40);
+                    g2.fillRect(col*40+240, row*40-80, 40, 40);//fix this shit
 
-             }
+                }
             }
 
         }
